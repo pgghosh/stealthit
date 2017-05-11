@@ -13,11 +13,19 @@ class ShoppingBasketTest extends FunSuite {
   }
 
   test("List of Apples and Oranges in any order gives the total checkout value."){
-    assert(checkout(List("Apple","Orange","Orange","Apple")) == 1.70)
+    assert(checkout(List("Apple","Orange","Orange","Apple")) == 1.10)
   }
 
   test("List of Apples, Oranges and any other items in any order only gives the total checkout value for Apples and Oranges."){
-    assert(checkout(List("Apple","Orange","Orange","Blah","Apple")) == 1.70)
+    assert(checkout(List("Apple","Orange","Orange","Blah","Apple")) == 1.10)
+  }
+
+  test("List of even number of Apples and Oranges in multiples of three in any order gives the total checkout value."){
+    assert(checkout(List("Apple","Orange","Orange","Apple","Orange")) == 1.10)
+  }
+
+  test("List of Apples and Oranges in any order gives offer value if amounts qualify for order."){
+    assert(checkout(List("Apple","Orange","Orange","Apple","Orange","Apple","Orange")) == 1.95)
   }
 
 }
